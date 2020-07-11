@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_vpn_state"
+        style="@style/CustomTextAppearance.Text16.WhiteNormal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_8"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:background="@drawable/selector_vpn_state"
+        android:ellipsize="end"
+        android:enabled="false"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingStart="@dimen/margin_8"
+        android:paddingTop="@dimen/margin_4"
+        android:paddingEnd="@dimen/margin_8"
+        android:paddingBottom="@dimen/margin_4"
+        android:textColor="@color/colorTextWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_duration"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <co.sentinel.lite.ui.custom.BlurFlagImageView
+        android:id="@+id/fv_flag"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/vpn_connected_flag_height"
+        android:layout_marginTop="@dimen/margin_8"
+        android:paddingTop="@dimen/margin_8"
+        android:paddingBottom="@dimen/margin_8"
+        android:scaleType="fitXY"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/fl_download_speed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/ll_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:background="@android:color/transparent"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
+
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="28dp"
+            android:textColor="@color/colorTextWhite"
+            android:layout_marginTop="@dimen/margin_8"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/margin_8"
+            android:paddingTop="@dimen/margin_8"
+            android:paddingEnd="@dimen/margin_8" />
+
+        <TextView
+            android:id="@+id/tv_ip"
+            style="@style/CustomTextAppearance.Text16.Gray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="@dimen/margin_8"
+            android:textSize="20dp"
+            android:textColor="@color/colorTextWhite"
+            android:textStyle="bold"
+            android:paddingStart="@dimen/margin_8"
+            android:paddingTop="0dp"
+            android:paddingEnd="@dimen/margin_8"
+            android:paddingBottom="@dimen/margin_8" />
+
+    </LinearLayout>
+
+    <android.support.v7.widget.AppCompatImageButton
+        android:id="@+id/ib_bookmark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:paddingStart="@dimen/margin_16"
+        android:paddingEnd="@dimen/margin_8"
+        android:visibility="gone"
+        android:paddingBottom="@dimen/margin_16"
+        android:src="@drawable/ic_bookmark_inactive"
+        app:layout_constraintEnd_toEndOf="@+id/ll_location"
+        app:layout_constraintTop_toTopOf="@+id/ll_location" />
+
+    <FrameLayout
+        android:id="@+id/fl_download_speed"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_16"
+        app:layout_constraintEnd_toStartOf="@+id/fl_upload_speed"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_location">
+
+        <TextView
+
+            android:id="@+id/tv_download_speed"
+            style="@style/CustomTextAppearance.Text24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/colorTextWhite"
+            android:drawableStart="@drawable/ic_download_speed"
+            android:drawablePadding="@dimen/margin_8"
+            android:gravity="center_horizontal|bottom" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/download_speed"
+        style="@style/CustomTextAppearance.Text12.Gray"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="@dimen/margin_8"
+        android:text="@string/download_speed"
+        app:layout_constraintEnd_toEndOf="@+id/fl_download_speed"
+        app:layout_constraintStart_toStartOf="@+id/fl_download_speed"
+        app:layout_constraintTop_toBottomOf="@+id/fl_download_speed" />
+
+    <View
+        android:layout_width="@dimen/margin_1"
+        android:layout_height="@dimen/margin_48"
+        android:background="@color/colorCardDark"
+        app:layout_constraintBottom_toBottomOf="@+id/download_speed"
+        app:layout_constraintEnd_toStartOf="@+id/upload_speed"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/download_speed"
+        app:layout_constraintTop_toTopOf="@+id/fl_download_speed"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <FrameLayout
+        android:id="@+id/fl_upload_speed"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/margin_8"
+        android:layout_marginEnd="@dimen/margin_8"
+        app:layout_constraintBottom_toBottomOf="@+id/fl_download_speed"
+        app:layout_constraintEnd_toStartOf="@+id/fl_data_used"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/fl_download_speed"
+        app:layout_constraintTop_toTopOf="@+id/fl_download_speed"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/tv_upload_speed"
+            style="@style/CustomTextAppearance.Text24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/colorTextWhite"
+            android:drawableStart="@drawable/ic_upload_speed"
+            android:drawablePadding="@dimen/margin_8" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/upload_speed"
+        style="@style/CustomTextAppearance.Text12.Gray"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:paddingBottom="@dimen/margin_8"
+        android:text="@string/upload_speed"
+        app:layout_constraintBottom_toBottomOf="@+id/download_speed"
+        app:layout_constraintEnd_toEndOf="@+id/fl_upload_speed"
+        app:layout_constraintStart_toStartOf="@+id/fl_upload_speed"
+        app:layout_constraintTop_toTopOf="@+id/download_speed"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <View
+        android:layout_width="@dimen/margin_1"
+        android:layout_height="@dimen/margin_48"
+        android:background="@color/colorCardDark"
+        app:layout_constraintBottom_toBottomOf="@+id/download_speed"
+        app:layout_constraintEnd_toStartOf="@+id/data_used"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/upload_speed"
+        app:layout_constraintTop_toTopOf="@+id/fl_download_speed"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <FrameLayout
+        android:id="@+id/fl_data_used"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/margin_8"
+        app:layout_constraintBottom_toBottomOf="@+id/fl_upload_speed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/fl_upload_speed"
+        app:layout_constraintTop_toTopOf="@+id/fl_upload_speed"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/tv_data_used"
+            style="@style/CustomTextAppearance.Text24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/colorTextWhite"
+            android:drawableStart="@drawable/ic_data_usage"
+            android:drawablePadding="@dimen/margin_8" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/data_used"
+        style="@style/CustomTextAppearance.Text12.Gray"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:paddingBottom="@dimen/margin_8"
+        android:text="@string/data_used"
+        app:layout_constraintBottom_toBottomOf="@+id/upload_speed"
+        app:layout_constraintEnd_toEndOf="@+id/fl_data_used"
+        app:layout_constraintStart_toStartOf="@+id/fl_data_used"
+        app:layout_constraintTop_toTopOf="@+id/upload_speed" />
+
+    <TextView
+        android:id="@+id/bandwidth"
+        style="@style/CustomTextAppearance.Text16.Gray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_12"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:layout_marginStart="16dp"
+        android:paddingTop="@dimen/margin_24"
+        android:paddingBottom="@dimen/margin_8"
+        android:text="@string/vpn_bandwidth_connected"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/download_speed" />
+
+    <TextView
+        android:id="@+id/tv_bandwidth"
+        android:textSize="28dp"
+        android:fontFamily="@font/opensanssemibold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:paddingBottom="@dimen/margin_24"
+        android:textColor="@color/colorTextWhite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bandwidth" />
+
+    <TextView
+        android:id="@+id/latency"
+        style="@style/CustomTextAppearance.Text16.Gray"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_16"
+        android:drawableTop="@drawable/ic_latency"
+        android:drawablePadding="@dimen/margin_8"
+        android:gravity="center_horizontal|bottom"
+        android:text="@string/vpn_latency_connected"
+        app:layout_constraintEnd_toStartOf="@+id/enc_method"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_bandwidth" />
+
+    <TextView
+        android:id="@+id/tv_latency"
+        style="@style/CustomTextAppearance.Text12"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8"
+        android:gravity="center"
+        android:paddingBottom="@dimen/margin_8"
+        android:textColor="@color/colorTextWhite"
+        app:layout_constraintEnd_toEndOf="@+id/latency"
+        app:layout_constraintStart_toStartOf="@+id/latency"
+        app:layout_constraintTop_toBottomOf="@+id/latency" />
+
+    <View
+        android:layout_width="@dimen/margin_1"
+        android:layout_height="@dimen/margin_48"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_latency"
+        app:layout_constraintEnd_toStartOf="@+id/tv_enc_method"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/tv_latency"
+        app:layout_constraintTop_toTopOf="@+id/latency"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/enc_method"
+        style="@style/CustomTextAppearance.Text16.Gray"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/margin_8"
+        android:layout_marginEnd="@dimen/margin_8"
+        android:drawableTop="@drawable/ic_enc_method"
+        android:drawablePadding="@dimen/margin_4"
+        android:gravity="center_horizontal|bottom"
+        android:text="@string/vpn_enc_method_connected"
+        app:layout_constraintBottom_toBottomOf="@+id/latency"
+        app:layout_constraintEnd_toStartOf="@+id/duration"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/latency"
+        app:layout_constraintTop_toTopOf="@+id/latency"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tv_enc_method"
+        style="@style/CustomTextAppearance.Text12"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:paddingBottom="@dimen/margin_8"
+        android:textColor="@color/colorTextWhite"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_latency"
+        app:layout_constraintEnd_toEndOf="@+id/enc_method"
+        app:layout_constraintStart_toStartOf="@+id/enc_method"
+        app:layout_constraintTop_toTopOf="@+id/tv_latency"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <View
+        android:layout_width="@dimen/margin_1"
+        android:layout_height="@dimen/margin_48"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_latency"
+        app:layout_constraintEnd_toStartOf="@+id/tv_duration"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tv_enc_method"
+        app:layout_constraintTop_toTopOf="@+id/latency"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/duration"
+        style="@style/CustomTextAppearance.Text16.Gray"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/margin_8"
+        android:drawableTop="@drawable/ic_duration"
+        android:drawablePadding="@dimen/margin_4"
+        android:gravity="center_horizontal|bottom"
+        android:text="@string/vpn_duration_connected"
+        app:layout_constraintBottom_toBottomOf="@+id/enc_method"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/enc_method"
+        app:layout_constraintTop_toTopOf="@+id/enc_method"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tv_duration"
+        style="@style/CustomTextAppearance.Text12"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:paddingBottom="@dimen/margin_8"
+        android:textColor="@color/colorTextWhite"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_enc_method"
+        app:layout_constraintEnd_toEndOf="@+id/duration"
+        app:layout_constraintStart_toStartOf="@+id/duration"
+        app:layout_constraintTop_toTopOf="@+id/tv_enc_method" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/margin_8"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_disconnect"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_latency" />
+
+    <Button
+        android:id="@+id/btn_disconnect"
+        style="@style/CustomTextAppearance.Disconnect"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/disconnect"
+        android:background="@drawable/settings_tile_background_1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_view_vpn"
+        style="@style/CustomTextAppearance.BlueButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:enabled="false"
+        android:text="@string/view_vpns"
+        android:visibility="gone"
+        android:textAllCaps="false"
+        android:background="@drawable/vpn_card_background"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_disconnect"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_disconnect"
+        app:layout_constraintTop_toTopOf="@+id/btn_disconnect" />
+</android.support.constraint.ConstraintLayout>
