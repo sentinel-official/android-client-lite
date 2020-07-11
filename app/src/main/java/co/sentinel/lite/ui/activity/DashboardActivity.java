@@ -141,12 +141,13 @@ public class DashboardActivity extends AppCompatActivity implements OnGenericFra
         initListeners();
         loadVpnFragment(null);
 
-        FiveStarsDialog fiveStarsDialog = new FiveStarsDialog(this,"contactmyriadstudios@gmail.com");
+        FiveStarsDialog fiveStarsDialog = new FiveStarsDialog(this,"");
         fiveStarsDialog.setRateText("Your feedback helps us improve.")
                 .setTitle("Please take a moment to rate us.")
                 .setForceMode(false)
                 .setUpperBound(4)
                 .setReviewListener(this)
+                .setNegativeReviewListener(this)
                 .showAfter(3);
 
         if(mPreferences.getBoolean("autoMode",false)==true){
