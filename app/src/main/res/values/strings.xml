@@ -172,17 +172,17 @@
 
 
 
-    <string name="info_title_1">Secure decentralized VPN</string>
-    <string name="info_title_2">Secure decentralized VPN</string>
-    <string name="info_title_3">Secure decentralized VPN</string>
-    <string name="info_title_4">Secure decentralized VPN</string>
-    <string name="info_title_5">Secure decentralized VPN</string>
+    <string name="info_title_1">Welcome</string>
+    <string name="info_title_2">Secure</string>
+    <string name="info_title_3">No Logs</string>
+    <string name="info_title_4">Decentralized</string>
+    <string name="info_title_5">Enjoy</string>
 
-    <string name="info_desc_1">test</string>
-    <string name="info_desc_2">Decentralized VPN right at your finger tips</string>
-    <string name="info_desc_3">Decentralized VPN right at your finger tips</string>
-    <string name="info_desc_4">Decentralized VPN right at your finger tips</string>
-    <string name="info_desc_5">Decentralized VPN right at your finger tips</string>
+    <string name="info_desc_1">Sentinel is not just a VPN, it\'s a \'decentralized\' open-source provable VPN, or a \'dVPN\'.</string>
+    <string name="info_desc_2">The Sentinel dVPN can prove that your connection is being end to end encrypted with no exceptions.</string>
+    <string name="info_desc_3">The Sentinel dVPN can prove that your browsing history and information is not being stored.</string>
+    <string name="info_desc_4">The servers available on the Sentinel dVPN are operated by unbiased 3rd party individuals and organizations based all over the world, and are not controlled by any centralized entity.</string>
+    <string name="info_desc_5">We hope you enjoy your ad-free dVPN experience!</string>
 
     <string name="generic_error">Unable to reach server. Please retry.</string>
     <string name="update_available">Update Available</string>
