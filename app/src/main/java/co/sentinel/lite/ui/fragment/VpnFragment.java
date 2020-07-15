@@ -68,14 +68,13 @@ public class VpnFragment extends Fragment implements VpnAdapter.OnItemClickListe
     private SwipeRefreshLayout mSrReload;
     private EmptyRecyclerView mRvVpnList;
     private VpnAdapter mAdapter;
-    ConstraintLayout clEurope,clAsia,clNa,clAfrica,clSa,clOceania,clRandom;
+    ConstraintLayout clEurope,clAsia,clNa,clAfrica,clSa,clOceania,clRandom,clFav;
     ConstraintLayout ClBack;
     NestedScrollView ClRegion;
-    TextView tvNaCount,tvEuropeCount,tvAsiaCount,tvSaCount,tvAfricaCount,tvOceaniaCount,tvEmpty,tvLoading;
+    TextView tvNaCount,tvEuropeCount,tvAsiaCount,tvSaCount,tvAfricaCount,tvOceaniaCount,tvEmpty,tvLoading,tvFavCount;
     View viewHider;
     private SharedPreferences mPreferences;
-    private BroadcastReceiver autoReceiver;
-    private BroadcastReceiver visibilityReceiver;
+    private BroadcastReceiver autoReceiver, visibilityReceiver, countReceiver;
     private FloatingActionButton fabQuickConnect;
 
     private SortFilterByDialogFragment.OnSortFilterDialogActionListener mSortDialogActionListener = (iTag, iDialog, isPositiveButton, iSelectedSortType, toFilterByBookmark) -> {
@@ -182,6 +181,8 @@ public class VpnFragment extends Fragment implements VpnAdapter.OnItemClickListe
         clAfrica = iView.findViewById(R.id.cl_africa);
         clOceania = iView.findViewById(R.id.cl_oceania);
         clRandom = iView.findViewById(R.id.cl_random);
+        clFav = iView.findViewById(R.id.cl_fav);
+
 
         //Assigning server count values to counter text views
         tvNaCount = iView.findViewById(R.id.tvCountNa);
@@ -190,6 +191,8 @@ public class VpnFragment extends Fragment implements VpnAdapter.OnItemClickListe
         tvAfricaCount = iView.findViewById(R.id.tvCountAfrica);
         tvSaCount = iView.findViewById(R.id.tvCountSa);
         tvOceaniaCount = iView.findViewById(R.id.tvCountOceania);
+        tvFavCount = iView.findViewById(R.id.tvCountFav);
+
 
         if(mPreferences.getInt("firstlaunch",0)==0){
             new Handler().postDelayed(new Runnable() {
@@ -197,6 +200,7 @@ public class VpnFragment extends Fragment implements VpnAdapter.OnItemClickListe
             public void run() {
                   mAdapter.assignRegionCount();
                   getUpdatedServerCounts();
+                  clFav.setVisibility(VISIBLE);
                   mPreferences.edit().putInt("firstlaunch",1).apply();
                   ClRegion.setVisibility(View.VISIBLE);
                   fabQuickConnect.show();
@@ -205,34 +209,25 @@ public class VpnFragment extends Fragment implements VpnAdapter.OnItemClickListe
               }, 3000);
             }else{
             getUpdatedServerCounts();
+            clFav.setVisibility(VISIBLE);
             ClRegion.setVisibility(View.VISIBLE);
             fabQuickConnect.show();
             tvLoading.setVisibility(GONE);
             }
 
-        clEurope.setOnClickListener(v -> {
-            initiateRegionClick(1);
-        });
+        clEurope.setOnClickListener(v -> initiateRegionClick(1));
 
-        clAsia.setOnClickListener(v -> {
-            initiateRegionClick(2);
-        });
+        clAsia.setOnClickListener(v -> initiateRegionClick(2));
 
-        clNa.setOnClickListener(v -> {
-            initiateRegionClick(3);
-        });
+        clNa.setOnClickListener(v -> initiateRegionClick(3));
 
-        clAfrica.setOnClickListener(v -> {
-            initiateRegionClick(4);
-        });
+        clAfrica.setOnClickListener(v -> initiateRegionClick(4));
 
-        clSa.setOnClickListener(v -> {
-            initiateRegionClick(5);
-        });
+        clSa.setOnClickListener(v -> initiateRegionClick(5));
 
-        clOceania.setOnClickListener(v -> {
-            initiateRegionClick(6);
-        });
+        clOceania.setOnClickListener(v -> initiateRegionClick(6));
+
+        clFav.setOnClickListener(v -> initiateRegionClick(7));
 
         //REVAMP return to region selection if the user wants to view nodes from other continents
         ClBack.setOnClickListener(v -> {
@@ -486,6 +481,19 @@ public class VpnFragment extends Fragment implements VpnAdapter.OnItemClickListe
             }
         };
         getActivity().registerReceiver(visibilityReceiver, new IntentFilter("closelist"));
+
+        countReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context arg0, Intent intent) {
+                String action = intent.getAction();
+                if (action.equals("count")) {
+                    mAdapter.assignRegionCount();
+                    getUpdatedServerCounts();
+                }
+            }
+        };
+        getActivity().registerReceiver(countReceiver, new IntentFilter("count"));
+
     }
 
     @Override
@@ -493,6 +501,8 @@ public class VpnFragment extends Fragment implements VpnAdapter.OnItemClickListe
         super.onDestroyView();
         getActivity().unregisterReceiver(visibilityReceiver);
         getActivity().unregisterReceiver(autoReceiver);
+        getActivity().unregisterReceiver(countReceiver);
+
     }
 
     @Override
@@ -511,10 +521,11 @@ public class VpnFragment extends Fragment implements VpnAdapter.OnItemClickListe
                 checkCounts("africaCount",clAfrica,tvAfricaCount);
                 checkCounts("saCount",clSa,tvSaCount);
                 checkCounts("oceaniaCount",clOceania,tvOceaniaCount);
+                checkCounts("favCount",clFav,tvFavCount);
     }
 
     public void checkCounts(String key, ConstraintLayout regionButton, TextView textCount){
-        if(mPreferences.getInt(key,-1)==0){//if the region count is zero, hide the region's button
+        if(mPreferences.getInt(key,-1)==0&&!key.equals("favCount")){//if the region count is zero, hide the region's button
             regionButton.setVisibility(GONE);
         }else if(mPreferences.getInt(key,-1)==-1){//if the region count is -1 then region count has not been initialized, recursively calculate until the value is obtained
 

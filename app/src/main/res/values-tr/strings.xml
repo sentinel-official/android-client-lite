@@ -198,6 +198,7 @@
     <string name="return_bold">dönüş</string>
     <string name="to_menu_lite">Menü</string>
     <string name="auto_connect">lansmanda otomatik bağlantı</string>
+    <string name="favorites">" Favoriler"</string>
 
 
 </resources>

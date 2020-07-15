@@ -198,5 +198,6 @@
     <string name="return_bold">возвращение</string>
     <string name="to_menu_lite">меню</string>
     <string name="auto_connect">" автоматическое подключение при запуске"</string>
+    <string name="favorites">" избранное"</string>
 
 </resources>

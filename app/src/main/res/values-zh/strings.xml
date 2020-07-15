@@ -200,5 +200,6 @@ PKCS12文件加密密钥</string>
     <string name="return_bold">返回</string>
     <string name="to_menu_lite">"菜单 "</string>
     <string name="auto_connect">"启动时自动连接 "</string>
+    <string name="favorites">" 已收藏"</string>
 
 </resources>

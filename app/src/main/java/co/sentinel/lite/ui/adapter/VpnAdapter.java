@@ -2,6 +2,7 @@ package co.sentinel.lite.ui.adapter;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.preference.PreferenceManager;
@@ -40,8 +41,8 @@ public class VpnAdapter extends RecyclerView.Adapter<VpnAdapter.ViewHolder> {
     private Application application;
     private SharedPreferences mPreferences;
     private String randomAddress,regionName;
-    private int randomIndice,regionFlag,i,j,europeCount,naCount,asiaCount,saCount,africaCount,oceaniaCount;
-    private List<VpnListEntity> europeData,naData,asiaData,saData,africaData,oceaniaData,oldData,rData;
+    private int randomIndice,regionFlag,i,j,europeCount,naCount,asiaCount,saCount,africaCount,oceaniaCount,favCount;
+    private List<VpnListEntity> europeData,naData,asiaData,saData,africaData,oceaniaData,oldData,rData,bData;
 
     public VpnAdapter(OnItemClickListener iListener, Context iContext, Application app) { //REVAMP fetch application context to initialize WORLD library
         mItemClickListener = iListener;
@@ -144,10 +145,19 @@ public class VpnAdapter extends RecyclerView.Adapter<VpnAdapter.ViewHolder> {
             // Set listeners
             mRootView.setOnClickListener(v -> onRootViewClick(mData.get(getAdapterPosition())));
             mBtnConnect.setOnClickListener(v -> onConnectClick(mData.get(getAdapterPosition()).getAccountAddress()));
-            mIbBookmark.setOnClickListener(v -> onBookmarkClicked(mData.get(getAdapterPosition())));
+            mIbBookmark.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBookmarkClicked(mData.get(getAdapterPosition()));
+                }
+            });
         }
     }
 
+    public void updateFavs(){
+        Intent intent = new Intent("count");
+        mContext.sendBroadcast(intent);
+    }
 
     public void loadData(List<VpnListEntity> iData){
         if (mData == null||iData!=oldData){
@@ -158,6 +168,7 @@ public class VpnAdapter extends RecyclerView.Adapter<VpnAdapter.ViewHolder> {
             scanRegion(iData);
             assignRegionCount();
             mData = iData;
+            updateFavs();
             notifyDataSetChanged();
             }
         setRegion();
@@ -182,6 +193,7 @@ public class VpnAdapter extends RecyclerView.Adapter<VpnAdapter.ViewHolder> {
             mPreferences.edit().putInt("saCount", saCount).apply();
             mPreferences.edit().putInt("africaCount", africaCount).apply();
             mPreferences.edit().putInt("oceaniaCount", oceaniaCount).apply();
+            mPreferences.edit().putInt("favCount",favCount).apply();
         }
 
         public void scanRegion(List<VpnListEntity> iData){
@@ -192,16 +204,23 @@ public class VpnAdapter extends RecyclerView.Adapter<VpnAdapter.ViewHolder> {
             africaData = new ArrayList<>();
             saData = new ArrayList<>();
             oceaniaData = new ArrayList<>();
+            bData = new ArrayList<>();
             europeCount = 0;
             asiaCount = 0;
             naCount = 0;
             africaCount = 0;
             saCount = 0;
             oceaniaCount = 0;
+            favCount = 0;
             // Fetch number count and add nodes to their respective regions.
             for (i = 0; i < iData.size(); i++) {
                 regionName = World.getCountryFrom(iData.get(i).getLocation().country).getContinent();
 
+                //add data to favorites list if item is bookmarked
+                if (iData.get(i).isBookmarked()){
+                    bData.add(iData.get(i));
+                    favCount++;
+                }
                 switch (regionName){
                     case "Europe":
                         europeCount++;
@@ -251,6 +270,9 @@ public class VpnAdapter extends RecyclerView.Adapter<VpnAdapter.ViewHolder> {
                     break;
                 case 6:
                     mData = oceaniaData;
+                    break;
+                case 7:
+                    mData = bData;
                     break;
             }
             notifyDataSetChanged();

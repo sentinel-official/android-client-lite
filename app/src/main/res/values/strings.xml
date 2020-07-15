@@ -198,7 +198,7 @@
     <string name="action_skip">Skip</string>
     <string name="action_rate">Rate</string>
     <string name="filter_by_title">Filters</string>
-    <string name="filter_by_bookmark">Show favourites only</string>
+    <string name="filter_by_bookmark">Show favourites</string>
     <string name="sort_by_title">Sort By</string>
     <string name="sort_by_default">Default</string>
     <string name="sort_by_country_a">Country</string>
@@ -238,5 +238,6 @@
     <string name="return_bold">Return</string>
     <string name="to_menu_lite">to menu</string>
     <string name="auto_connect">Auto connect on app launch</string>
+    <string name="favorites">Favorites</string>
 
 </resources>
