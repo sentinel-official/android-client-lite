@@ -194,7 +194,7 @@
     <string name="connect_lite">соединять</string>
     <string name="available_nodes">доступный</string>
     <string name="nodes">связи</string>
-    <string name="extra">дополнительный</string>
+    <string name="extra">"  Больше"</string>
     <string name="return_bold">возвращение</string>
     <string name="to_menu_lite">меню</string>
     <string name="auto_connect">" автоматическое подключение при запуске"</string>

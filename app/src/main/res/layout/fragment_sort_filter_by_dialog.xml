@@ -22,6 +22,7 @@
     <android.support.v7.widget.AppCompatCheckBox
         android:id="@+id/cb_filter_by_bookmark"
         style="@style/CustomTextAppearance.Text14"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_8"
@@ -47,6 +48,7 @@
         style="@style/CustomTextAppearance.Text16.WhiteNormal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:paddingStart="@dimen/margin_16"
         android:paddingTop="@dimen/margin_16"
         android:paddingEnd="@dimen/margin_16"
