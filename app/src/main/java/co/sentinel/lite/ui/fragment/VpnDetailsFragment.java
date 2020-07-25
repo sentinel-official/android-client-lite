@@ -160,11 +160,6 @@ public class VpnDetailsFragment extends Fragment implements View.OnClickListener
         return aData;
     }
 
-    public void setToolbarVisible(){
-        Intent intent = new Intent("toolbarvisible");
-        getActivity().sendBroadcast(intent);
-    }
-
     public void setToolbarGone(){
         Intent intent = new Intent("toolbargone");
         getActivity().sendBroadcast(intent);

@@ -40,6 +40,7 @@ public class WebClient {
             .writeTimeout(30, TimeUnit.SECONDS)
             .retryOnConnectionFailure(false)
             .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+
             .addInterceptor(new AuthInterceptor())).build();
 
     private static OkHttpClient sHttpRetryClient = sHttpClient.newBuilder()

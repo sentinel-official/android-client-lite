@@ -19,7 +19,7 @@
         android:theme="@style/AppTheme.CustomTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup"
-        tools:targetApi="n">
+        tools:targetApi="q">
 
         <activity
             android:name="co.sentinel.lite.ui.activity.SplashActivity"

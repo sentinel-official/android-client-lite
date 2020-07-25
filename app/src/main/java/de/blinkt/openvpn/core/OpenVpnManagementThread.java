@@ -13,7 +13,7 @@ import android.os.ParcelFileDescriptor;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 import java.io.FileDescriptor;
 import java.io.IOException;
