@@ -221,31 +221,35 @@ public class VpnAdapter extends RecyclerView.Adapter<VpnAdapter.ViewHolder> {
                     bData.add(iData.get(i));
                     favCount++;
                 }
-                switch (regionName){
-                    case "Europe":
-                        europeCount++;
-                        europeData.add(iData.get(i));
-                        break;
-                    case "North America":
-                        naCount++;
-                        naData.add(iData.get(i));
-                        break;
-                    case "Asia":
-                        asiaCount++;
-                        asiaData.add(iData.get(i));
-                        break;
-                    case "Africa":
-                        africaCount++;
-                        africaData.add(iData.get(i));
-                        break;
-                    case "South America":
-                        saCount++;
-                        saData.add(iData.get(i));
-                        break;
-                    case "Oceania":
-                        oceaniaCount++;
-                        oceaniaData.add(iData.get(i));
-                        break;
+                try {
+                    switch (regionName) {
+                        case "Europe":
+                            europeCount++;
+                            europeData.add(iData.get(i));
+                            break;
+                        case "North America":
+                            naCount++;
+                            naData.add(iData.get(i));
+                            break;
+                        case "Asia":
+                            asiaCount++;
+                            asiaData.add(iData.get(i));
+                            break;
+                        case "Africa":
+                            africaCount++;
+                            africaData.add(iData.get(i));
+                            break;
+                        case "South America":
+                            saCount++;
+                            saData.add(iData.get(i));
+                            break;
+                        case "Oceania":
+                            oceaniaCount++;
+                            oceaniaData.add(iData.get(i));
+                            break;
+                    }
+                }catch(Exception e){
+
                 }
             }
         }
