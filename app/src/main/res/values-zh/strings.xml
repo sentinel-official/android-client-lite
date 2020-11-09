@@ -199,7 +199,14 @@ PKCS12文件加密密钥</string>
     <string name="extra">额外</string>
     <string name="return_bold">返回</string>
     <string name="to_menu_lite">"菜单 "</string>
-    <string name="auto_connect">"启动时自动连接 "</string>
+    <string name="auto_connect">"自动连接 "</string>
     <string name="favorites">" 已收藏"</string>
+    <string name="auto">"学到更多 "</string>
+    <string name="quick_connect">随机连接</string>
+    <string name="monitor_sessions">"监控会话 "</string>
+    <string name="auto_connect_desc">"启动时自动连接 "</string>
+    <string name="usage_history">" 使用记录 "</string>
+    <string name="learn_more">"学到更多 "</string>
+    <string name="learn_more_desc">"了解有关Sentinel的更多信息 "</string>
 
 </resources>

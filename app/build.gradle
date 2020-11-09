@@ -7,8 +7,8 @@ android {
         applicationId "co.sentinel.sentinellite"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.sdkVersion
-        versionCode 16
-        versionName '0.3.2'
+        versionCode 38
+        versionName '0.3.3'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         // Enable Vector drawable
         vectorDrawables.useSupportLibrary = true
@@ -44,6 +44,7 @@ android {
         checkReleaseBuilds false // Add this
         abortOnError false
     }
+
 }
 
 dependencies {
@@ -79,6 +80,11 @@ dependencies {
     implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:3.0.3'
     // Amplitude Analytics
     implementation 'com.amplitude:android-sdk:2.21.0'
+
+    //google play ratings API
+    implementation 'com.google.android.play:core:1.8.0'
+
+    implementation 'com.github.Philipinho:CoinGecko-Java:e5a72c7083aa0aa9b3042b21ae3a360d112bd2b9'
 
     // Android Test Libs
     implementation 'junit:junit:4.12'

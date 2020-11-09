@@ -159,7 +159,7 @@
     <string name="duration">duration</string>
     <string name="language">Language</string>
     <string name="select_language">Select Language</string>
-    <string name="share_app">Share App</string>
+    <string name="share_app">Share</string>
     <string name="generic_error">Unable to reach server. Please retry.</string>
     <string name="update_available">Update Available</string>
     <string name="update_desc">A new version has been released and is available for download.\n\nKindly download and install the latest version in order to use the app.</string>
@@ -188,7 +188,7 @@
     <string name="usage">Usage</string>
     <string name="sessions">sessions</string>
     <string name="received">received</string>
-    <string name="about">About $SENT</string>
+    <string name="about">About</string>
     <string name="social">Social</string>
     <string name="quick">Quick</string>
     <string name="connect_lite">Connect</string>
@@ -197,7 +197,14 @@
     <string name="extra">Extra</string>
     <string name="return_bold">Return</string>
     <string name="to_menu_lite">to menu</string>
-    <string name="auto_connect">Auto connect on app launch</string>
+    <string name="auto_connect"><b>Auto</b> Connect</string>
     <string name="favorites">Favorites</string>
+    <string name="auto"><b>Learn</b> More</string>
+    <string name="quick_connect">Connect to a random node</string>
+    <string name="monitor_sessions">Monitor your sessions on this device</string>
+    <string name="auto_connect_desc">Automatic connect on app launch</string>
+    <string name="usage_history"><b>Usage</b> History</string>
+    <string name="learn_more"><b>Learn</b> More</string>
+    <string name="learn_more_desc">Sentinel P2P bandwidth marketplace</string>
 
 </resources>

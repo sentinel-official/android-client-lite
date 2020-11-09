@@ -141,7 +141,7 @@
             android:layout_height="20dp"
             android:layout_marginStart="15dp"
             android:alpha="0.8"
-            android:src="@drawable/ic_info_black_24dp"
+            android:src="@drawable/ic_notif"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toTopOf="@id/guidelineAbout"
             />

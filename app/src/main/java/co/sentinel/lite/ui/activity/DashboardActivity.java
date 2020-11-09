@@ -15,6 +15,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
@@ -32,6 +33,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.play.core.review.ReviewInfo;
+import com.google.android.play.core.review.ReviewManager;
+import com.google.android.play.core.review.ReviewManagerFactory;
+import com.google.android.play.core.tasks.OnCompleteListener;
+import com.google.android.play.core.tasks.OnFailureListener;
+import com.google.android.play.core.tasks.Task;
 
 import co.sentinel.lite.BuildConfig;
 import co.sentinel.lite.R;
@@ -74,7 +82,7 @@ import static co.sentinel.lite.util.AppConstants.TAG_TRIPLE_ACTION_DIALOG;
 import static de.blinkt.openvpn.core.OpenVPNService.humanReadableByteCount;
 
 public class DashboardActivity extends AppCompatActivity implements OnGenericFragmentInteractionListener,
-        OnVpnConnectionListener, VpnStatus.StateListener, VpnStatus.ByteCountListener, DoubleActionDialogFragment.OnDialogActionListener, View.OnClickListener, NegativeReviewListener, ReviewListener {
+        OnVpnConnectionListener, VpnStatus.StateListener, VpnStatus.ByteCountListener, DoubleActionDialogFragment.OnDialogActionListener, View.OnClickListener {
 
     private boolean mHasActivityResult;
     private Toolbar mToolbar;
@@ -87,8 +95,10 @@ public class DashboardActivity extends AppCompatActivity implements OnGenericFra
     private IOpenVPNServiceInternal mService;
     private SharedPreferences mPreferences;
     private ImageView mSearch,mSort;
+    private int launchCount;
     private BroadcastReceiver toolbarGone,toolbarVisible;
     private static final String TAG = BaseActivity.class.getSimpleName();
+    ReviewInfo reviewInfo;
 
 
     private ServiceConnection mConnection = new ServiceConnection() {
@@ -141,36 +151,33 @@ public class DashboardActivity extends AppCompatActivity implements OnGenericFra
         initListeners();
         loadVpnFragment(null);
 
-        FiveStarsDialog fiveStarsDialog = new FiveStarsDialog(this,"");
-        fiveStarsDialog.setRateText("Your feedback helps us improve.")
-                .setTitle("Please take a moment to rate us.")
-                .setForceMode(false)
-                .setUpperBound(4)
-                .setReviewListener(this)
-                .setNegativeReviewListener(this)
-                .showAfter(3);
+        launchCount = mPreferences.getInt("launchcount",1);
+        if(launchCount%10==0){
+            Review();
+        }
+        mPreferences.edit().putInt("launchcount",launchCount+1).apply();
 
         if(mPreferences.getBoolean("autoMode",false)==true){
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    //Auto connect on app launch
-                    Intent autoIntent = new Intent("auto");
-                    sendBroadcast(autoIntent);
-                }
+            new Handler().postDelayed(() -> {
+                //Auto connect on app launch
+                Intent autoIntent = new Intent("auto");
+                sendBroadcast(autoIntent);
             }, 1000);
         }
-
     }
 
-    @Override
-    public void onNegativeReview(int stars) {
-        Log.d(TAG, "Negative review " + stars);
-    }
-
-    @Override
-    public void onReview(int stars) {
-        Log.d(TAG, "Review " + stars);
+    private void Review(){
+        ReviewManager manager = ReviewManagerFactory.create(this);
+        manager.requestReviewFlow().addOnCompleteListener(task -> {
+            if(task.isSuccessful()){
+                reviewInfo = task.getResult();
+                manager.launchReviewFlow(DashboardActivity.this, reviewInfo)
+                        .addOnFailureListener(e ->
+                            Toast.makeText(DashboardActivity.this, "Rating Failed", Toast.LENGTH_SHORT).show())
+                        .addOnCompleteListener(task1 ->
+                                Toast.makeText(DashboardActivity.this, "Review Completed, Thank You!", Toast.LENGTH_SHORT).show());
+            }
+        }).addOnFailureListener(e -> Toast.makeText(DashboardActivity.this, "In-App Request Failed", Toast.LENGTH_SHORT).show());
     }
 
     @Override

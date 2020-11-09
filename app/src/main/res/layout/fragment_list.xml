@@ -68,8 +68,8 @@
             app:fabCustomSize="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginBottom="20dp"
-            android:layout_marginRight="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginBottom="80dp"
             android:background="@color/colorTextWhite"
             android:visibility="gone"
             android:backgroundTint="@color/colorTextWhite"
@@ -109,6 +109,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+
             android:text="l o a d i n g"
             android:textSize="20dp"
             android:textColor="@color/colorTextWhite"

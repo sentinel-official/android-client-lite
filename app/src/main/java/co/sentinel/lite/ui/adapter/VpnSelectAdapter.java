@@ -9,12 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import co.sentinel.lite.R;
+import co.sentinel.lite.ui.fragment.ExtraFragment;
 import co.sentinel.lite.ui.fragment.VpnFragment;
 import co.sentinel.lite.ui.fragment.VpnUsageFragment;
 
 public class VpnSelectAdapter extends FragmentPagerAdapter {
 
-    private final int TAB_TITLES[] = new int[]{R.string.view_vpn_list, R.string.usage};
+    private final int TAB_TITLES[] = new int[]{R.string.view_vpn_list, R.string.extra};
     private Context mContext;
 
     public VpnSelectAdapter(FragmentManager fm, Context iContext) {
@@ -30,7 +31,7 @@ public class VpnSelectAdapter extends FragmentPagerAdapter {
                 aFragment = VpnFragment.newInstance();
                 break;
             case 1:
-                aFragment = VpnUsageFragment.newInstance();
+                aFragment = ExtraFragment.newInstance();
                 break;
         }
         return aFragment;

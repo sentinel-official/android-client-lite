@@ -199,6 +199,13 @@
     <string name="to_menu_lite">Menü</string>
     <string name="auto_connect">lansmanda otomatik bağlantı</string>
     <string name="favorites">" Favoriler"</string>
+    <string name="auto">otomatik</string>
+    <string name="quick_connect">rastgele bağlan</string>
+    <string name="monitor_sessions">"oturumları izle "</string>
+    <string name="auto_connect_desc">lansmanda otomatik bağlantı</string>
+    <string name="learn_more">"Daha fazla bilgi edin "</string>
+    <string name="usage_history">"Kullanım Geçmişi "</string>
+    <string name="learn_more_desc">"Sentinel hakkında daha fazla bilgi edinin "</string>
 
 
 </resources>

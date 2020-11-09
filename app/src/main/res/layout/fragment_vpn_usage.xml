@@ -5,66 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/ClTiles"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
-        <include layout="@layout/layout_settings_tiles"/>
-
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.v7.widget.SwitchCompat
-        android:id="@+id/auto_switch"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/auto_connect"
-        android:fontFamily="@font/opensansregular"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ClTiles"
-        android:visibility="visible"
-        android:checked="false"
-        android:textColor="@color/colorTextWhite"
-        android:padding="0dp"
-        android:paddingStart="5dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="10dp"
-        />
-
-    <TextView
-        android:id="@+id/usageTitle1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/usage"
-        android:textSize="24dp"
-        android:textColor="@color/colorTextWhite"
-        android:fontFamily="@font/opensansbold"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/auto_switch"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/history"
-        android:textSize="24dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/colorTextWhite"
-        android:fontFamily="@font/opensansregular"
-        app:layout_constraintStart_toEndOf="@id/usageTitle1"
-        app:layout_constraintTop_toBottomOf="@id/auto_switch"
-        />
-
-
     <android.support.v7.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
@@ -80,15 +20,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/usageTitle1">
+        app:layout_constraintTop_toTopOf="parent">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/vpn_card_background"
+            android:background="@android:color/transparent"
             >
-
-
 
             <TextView
                 android:id="@+id/tv_total_sessions"
@@ -103,6 +41,7 @@
                 android:paddingEnd="@dimen/margin_8"
                 app:layout_constraintBottom_toTopOf="@+id/total_sessions"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_total_duration"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -159,6 +98,7 @@
                 android:paddingStart="@dimen/margin_8"
                 android:paddingEnd="@dimen/margin_8"
                 app:layout_constraintBottom_toTopOf="@+id/total_duration"
+                app:layout_constraintStart_toEndOf="@+id/tv_total_duration"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -216,7 +156,5 @@
                 android:text="@string/vpn_usage_empty_list_message" />
         </RelativeLayout>
     </android.support.v4.widget.SwipeRefreshLayout>
-
-    <include layout="@layout/layout_social"/>
 
 </android.support.constraint.ConstraintLayout>

@@ -199,5 +199,12 @@
     <string name="to_menu_lite">меню</string>
     <string name="auto_connect">" автоматическое подключение при запуске"</string>
     <string name="favorites">" избранное"</string>
+    <string name="auto">" автоматический"</string>
+    <string name="quick_connect">" подключить случайный"</string>
+    <string name="monitor_sessions">Мониторинг сеансов</string>
+    <string name="auto_connect_desc">" автоматическое подключение при запуске"</string>
+    <string name="learn_more">"Учить больше "</string>
+    <string name="usage_history">"История использования "</string>
+    <string name="learn_more_desc">"Узнать больше о Sentinel "</string>
 
 </resources>

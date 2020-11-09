@@ -194,6 +194,13 @@
    <string name="extra">اضافی</string>
    <string name="return_bold">برگشت</string>
    <string name="to_menu_lite">منو</string>
-   <string name="auto_connect">"اتصال خودکار در هنگام پرتاب "</string>
+   <string name="auto_connect">"اتصال خودکار "</string>
     <string name="favorites">نشانک شده</string>
+    <string name="auto">خودکار</string>
+    <string name="quick_connect">اتصال تصادفی</string>
+    <string name="monitor_sessions">"جلسات را کنترل کنید "</string>
+    <string name="auto_connect_desc">"اتصال خودکار در هنگام پرتاب "</string>
+    <string name="usage_history">"تاریخچه استفاده "</string>
+    <string name="learn_more">"بیشتر بدانید "</string>
+    <string name="learn_more_desc">"درباره سنتینل بیشتر بدانید "</string>
 </resources>

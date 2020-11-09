@@ -49,12 +49,7 @@ public class VpnUsageFragment extends Fragment {
     private TextView mTvTotalSessions, mTvTotalDuration, mTvTotalReceivedData;
     private SwipeRefreshLayout mSrReload;
     private EmptyRecyclerView mRvVpnHistory;
-    private ConstraintLayout clLanguage,clShare,clAbout,clSocial,clSocialLayout;
-    private TextView btnClose,tvAbout;
-    private ImageButton telegram,medium,twitter,sentinelco;
-    private SwitchCompat scAuto;
     private SharedPreferences mPreferences;
-    private View socialDismiss;
 
     private VpnUsageAdapter mAdapter;
 
@@ -95,85 +90,11 @@ public class VpnUsageFragment extends Fragment {
 
     private void initView(View iView) {
         mPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        clLanguage = iView.findViewById(R.id.clLanguage);
-        clAbout = iView.findViewById(R.id.clAbout);
-        tvAbout = iView.findViewById(R.id.aboutTitle);
-        clShare = iView.findViewById(R.id.clShare);
-        clSocial = iView.findViewById(R.id.clSocial);
-        btnClose = iView.findViewById(R.id.btnClose);
-        sentinelco = iView.findViewById(R.id.ib_website);
-        twitter = iView.findViewById(R.id.ib_twitter);
-        telegram = iView.findViewById(R.id.ib_telegram);
-        medium = iView.findViewById(R.id.ib_medium);
-        scAuto = iView.findViewById(R.id.auto_switch);
-        scAuto.setChecked(mPreferences.getBoolean("autoMode",false));
-        clSocialLayout = iView.findViewById(R.id.clSocialLayout);
-        clSocialLayout.setAlpha(0.0f);
-        socialDismiss = iView.findViewById(R.id.dismissView);
-
-        clLanguage.setOnClickListener(v -> startActivityForResult(new Intent(getContext(), GenericActivity.class).putExtra(AppConstants.EXTRA_REQ_CODE, AppConstants.REQ_LANGUAGE), AppConstants.REQ_LANGUAGE));
-
-        clShare.setOnClickListener(v -> ShareCompat.IntentBuilder.from(getActivity())
-                .setType("text/plain")
-                .setChooserTitle("Share Sentinel dVPN")
-                .setText("http://play.google.com/store/apps/details?id=" + getActivity().getPackageName())
-                .startChooser());
-
-        clSocial.setOnClickListener(v -> {
-            clSocialLayout.setVisibility(View.VISIBLE);
-            clSocialLayout.animate().alpha(1.0f);
-            socialDismiss.setVisibility(View.VISIBLE);
-        });
-
-        socialDismiss.setOnClickListener(v -> {
-            clSocialLayout.setVisibility(View.GONE);
-            clSocialLayout.setAlpha(0.0f);
-            socialDismiss.setVisibility(View.GONE);
-        });
-
-        btnClose.setOnClickListener(v -> {
-            clSocialLayout.setVisibility(View.GONE);
-            clSocialLayout.setAlpha(0.0f);
-        });
-
-        scAuto.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if(scAuto.isChecked()){
-                mPreferences.edit().putBoolean("autoMode",true).apply();
-            }else{
-                mPreferences.edit().putBoolean("autoMode",false).apply();
-            }
-        });
 
         //Social buttons
         Intent socialIntent = new Intent();
         socialIntent.setAction(Intent.ACTION_VIEW);
         socialIntent.addCategory(Intent.CATEGORY_BROWSABLE);
-
-        clAbout.setOnClickListener(v -> {
-            socialIntent.setData(Uri.parse(getString(R.string.website_url)));
-            startActivity(socialIntent);
-        });
-
-        telegram.setOnClickListener(v -> {
-            socialIntent.setData(Uri.parse(getString(R.string.telegram_url)));
-            startActivity(socialIntent);
-        });
-
-        medium.setOnClickListener(v -> {
-            socialIntent.setData(Uri.parse(getString(R.string.medium_url)));
-            startActivity(socialIntent);
-        });
-
-        twitter.setOnClickListener(v -> {
-            socialIntent.setData(Uri.parse(getString(R.string.twitter_url)));
-            startActivity(socialIntent);
-        });
-
-        sentinelco.setOnClickListener(v -> {
-            socialIntent.setData(Uri.parse(getString(R.string.website_url)));
-            startActivity(socialIntent);
-        });
-
 
         mTvTotalSessions = iView.findViewById(R.id.tv_total_sessions);
         mTvTotalDuration = iView.findViewById(R.id.tv_total_duration);
