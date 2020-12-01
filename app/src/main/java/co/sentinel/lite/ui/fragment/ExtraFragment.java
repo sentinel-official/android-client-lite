@@ -32,7 +32,7 @@ import co.sentinel.lite.util.AppConstants;
 
 public class ExtraFragment extends Fragment {
 
-    private ConstraintLayout clUsage, clLanguage,clShare,clAbout,clSocial,clSocialLayout,clLearnMore;
+    private ConstraintLayout clUsage, clLanguage,clShare,clAbout,clSocial,clSocialLayout,clLearnMore,clExidio;
     private TextView btnClose,tvAbout,tvVersion;
     private ImageButton telegram,medium,twitter,sentinelco;
     private SwitchCompat scAuto;
@@ -73,6 +73,7 @@ public class ExtraFragment extends Fragment {
         tvAbout = view.findViewById(R.id.aboutTitle);
         clShare = view.findViewById(R.id.clShare);
         clSocial = view.findViewById(R.id.clSocial);
+        clExidio = view.findViewById(R.id.cl_exidio_logo);
         btnClose = view.findViewById(R.id.btnClose);
         sentinelco = view.findViewById(R.id.ib_website);
         twitter = view.findViewById(R.id.ib_twitter);
@@ -147,6 +148,14 @@ public class ExtraFragment extends Fragment {
         clAbout.setOnClickListener(v -> {
             socialIntent.setData(Uri.parse(getString(R.string.website_url)));
             startActivity(socialIntent);
+        });
+
+        clExidio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                socialIntent.setData(Uri.parse("https://www.exidio.co/"));
+                startActivity(socialIntent);
+            }
         });
 
         telegram.setOnClickListener(v -> {

@@ -11,7 +11,7 @@
     <string name = "remote_warning"> اگر ادامه دهید، شما به برنامه اجازه می دهید که کاملا OpenVPN را کنترل و تمام ترافیک شبکه را قطع کند.
  در غیر اینصورت خطر دستکاری داده های شما توسط برنامه های مخرب وجود خواهد داشت."</string>
     <string name = "no_error_found"> خطایی یافت نشد</string>
-    <string name = "lite">Lite Client v%s</string>
+    <string name = "lite">v%s</string>
     <string name = "screenoff_pause"> قطع ارتباط در صورت خاموش شدن صفحه:کمتر از %1$s در %2$ss</string>
     <string name = "debug_build"> رفع مشکل build</string>
     <string name = "built_by"> build تقریبا در %s انجام شد</string>

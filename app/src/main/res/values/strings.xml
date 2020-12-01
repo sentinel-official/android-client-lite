@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Sentinel Lite</string>
     <string name="sentinel">Sentinel</string>
-    <string name="lite">Lite Client v%s</string>
+    <string name="lite">v%s</string>
 
     <!-- String Array -->
     <string name="telegram_url" translatable="false">https://t.me/sentinel_co</string>

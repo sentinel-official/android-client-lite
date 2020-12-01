@@ -41,14 +41,48 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/app_icon" />
 
-    <TextView
-        android:id="@+id/tv_app_version"
-        style="@style/CustomTextAppearance.Text14"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cl_exidio_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@id/tv_app_version"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+        <TextView
+            style="@style/CustomTextAppearance.Text14"
+            android:id="@+id/tv_built_by"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="Built by"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="36dp"
+            android:src="@drawable/exidio_logo"
+            android:layout_marginStart="5dp"
+            app:layout_constraintStart_toEndOf="@id/tv_built_by"
+            app:layout_constraintTop_toTopOf="@id/tv_built_by"
+            app:layout_constraintBottom_toBottomOf="@id/tv_built_by"
+            />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_app_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="26dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:textSize="14dp"
+        android:textColor="@color/colorTextWhite"
+        android:alpha="0.7"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
