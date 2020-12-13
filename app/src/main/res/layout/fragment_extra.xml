@@ -203,7 +203,7 @@
         <ImageView
             android:layout_width="120dp"
             android:layout_height="36dp"
-            android:src="@drawable/exidio_logo"
+            app:srcCompat="@drawable/exidio_logo"
             android:layout_marginStart="5dp"
             app:layout_constraintStart_toEndOf="@id/tv_built_by"
             app:layout_constraintTop_toTopOf="@id/tv_built_by"
